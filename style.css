@@ -1,0 +1,443 @@
+/* --- RESET & POLICE PREMIUM --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0b1120; /* Bleu ENCORE plus profond pour faire ressortir les couleurs */
+    color: #e2e8f0;
+    scroll-behavior: smooth;
+    line-height: 1.6;
+}
+
+/* --- SCROLLBAR PREMIUM SUR MESURE (La touche Pro) --- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #1d4ed8; }
+
+/* --- VARIABLES DE DESIGN --- */
+:root {
+    --primary-blue: #3b82f6; 
+    --hover-blue: #2563eb;
+    --bg-dark: #0b1120;
+    --card-dark: rgba(30, 41, 59, 0.7);
+    --text-main: #f8fafc;
+    --text-gray: #94a3b8;
+    --success-green: #22c55e;
+}
+
+/* --- NAVBAR ULTRA-MODERNE --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 80px;
+    background-color: rgba(11, 17, 32, 0.85);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 800;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.4); /* Petit effet néon */
+}
+
+.nav-links { list-style: none; display: flex; gap: 25px; }
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.nav-links a:hover {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: var(--primary-blue);
+    box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+/* --- HERO SECTION IMMERSIVE --- */
+.hero {
+    min-height: 100vh;
+    padding-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(11, 17, 32, 0.7), rgba(11, 17, 32, 0.95)), url('https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2000&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    padding-top: 100px;
+}
+
+.hero h1 {
+    font-size: 5em;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.4em;
+    color: var(--text-gray);
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+/* --- LA BOITE DE RÉSERVATION & GLASSMORPHISM --- */
+.reservation-box, .glass-effect {
+    background: var(--card-dark);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 50px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.reservation-box h2 {
+    font-size: 2.2em;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Grille du formulaire */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+/* Design des inputs/selects standard */
+.form-grid input, .form-grid select {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(15, 23, 42, 0.6);
+    color: var(--text-main);
+    font-size: 1.1em;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.form-grid input:focus, .form-grid select:focus {
+    border-color: var(--primary-blue);
+    background-color: rgba(15, 23, 42, 0.9);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+/* --- LE SYSTÈME DE CRÉNEAUX PREMIUM --- */
+.slots-container {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+    padding-top: 20px;
+    min-height: 50px; /* Évite les sauts d'écran */
+}
+
+/* Text info si présent */
+.text-info {
+    grid-column: span 2;
+    color: var(--text-gray);
+    font-style: italic;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Boutons d'heures - Style "Outline" (Bordure lumineuse) */
+.slot-btn {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 2px solid rgba(148, 163, 184, 0.3);
+    padding: 16px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.2em;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+}
+
+.slot-btn:hover:not(:disabled) {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    background-color: rgba(59, 130, 246, 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(59, 130, 246, 0.2);
+}
+
+/* État sélectionné : Remplissage complet */
+.slot-btn.active {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.5);
+    transform: scale(1.05);
+}
+
+/* État 'Complet' (Créneau déjà réservé - Discret et pro) */
+.slot-btn:disabled, .slot-btn.booked {
+    background-color: rgba(15, 23, 42, 0.6) !important;
+    color: #475569 !important;
+    border: 2px dashed rgba(71, 85, 105, 0.4) !important;
+    cursor: not-allowed;
+    text-decoration: line-through;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- BOUTON DE SOUMISSION PRINCIPAL --- */
+.form-grid button, .btn-submit {
+    grid-column: span 2;
+    padding: 18px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--hover-blue));
+    color: white;
+    font-weight: 800;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin-top: 10px;
+}
+
+.form-grid button:hover:not(:disabled), .btn-submit:hover:not(:disabled) {
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
+    transform: translateY(-3px);
+}
+
+.form-grid button:disabled, .btn-submit:disabled {
+    background: #1e293b;
+    color: #64748b;
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+    transform: none;
+}
+
+/* --- LOADER ANIMÉ --- */
+.loader {
+    grid-column: span 2;
+    margin: 20px auto;
+    width: 45px;
+    height: 45px;
+    border: 4px solid rgba(255,255,255,0.05);
+    border-left-color: var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* --- SECTION TERRAINS ÉPURÉE --- */
+.terrains-section { padding: 120px 80px; background-color: var(--bg-dark); }
+.terrains-section h2, .contact-section h2 {
+    font-size: 3.5em;
+    font-weight: 800;
+    margin-bottom: 60px;
+    color: var(--text-main);
+    text-align: center;
+}
+
+.terrains-grid { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
+.terrain-card {
+    background-color: var(--card-dark);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    width: 420px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.terrain-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 40px -10px rgba(0, 0, 0, 0.7);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.terrain-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 4px solid var(--primary-blue);
+    transition: transform 0.5s ease;
+}
+
+.terrain-card:hover img { transform: scale(1.05); }
+.terrain-card h3 { font-size: 1.8em; padding: 25px 25px 10px 25px; color: var(--text-main); }
+.terrain-card p { font-size: 1.1em; padding: 0 25px 25px 25px; color: var(--text-gray); }
+
+/* --- SECTION AVANTAGES --- */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 80px 20px;
+    background-color: rgba(15, 23, 42, 0.4);
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.feature-item { text-align: center; max-width: 250px; flex: 1; transition: transform 0.3s; }
+.feature-item:hover { transform: translateY(-5px); }
+.feature-item i { font-size: 3.5em; color: var(--primary-blue); margin-bottom: 20px; text-shadow: 0 0 20px rgba(59,130,246,0.3); }
+.feature-item h3 { font-size: 1.5em; margin-bottom: 10px; color: var(--text-main); }
+.feature-item p { color: var(--text-gray); }
+
+/* --- CONTACT SECTION INTÉGRÉE --- */
+.contact-section { padding: 120px 80px; }
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--card-dark);
+    backdrop-filter: blur(15px);
+    padding: 60px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.contact-info { text-align: left; flex: 1; }
+.contact-info h3 { font-size: 2.2em; color: var(--primary-blue); margin-bottom: 20px; }
+.contact-info p { margin: 20px 0; font-size: 1.2em; color: var(--text-gray); display: flex; align-items: center; gap: 12px; }
+.contact-info i { color: var(--primary-blue); font-size: 1.2em; }
+
+/* Bouton WhatsApp Animé */
+.btn-whatsapp {
+    background-color: var(--success-green);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    transition: all 0.3s;
+    animation: pulse 2s infinite;
+}
+
+.btn-whatsapp:hover { 
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.6); 
+    transform: scale(1.05);
+    animation: none; /* On arrête le pulse quand on le survole */
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.map-container { flex: 1; border-radius: 15px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); min-height: 300px; }
+.map-container iframe { width: 100%; height: 100%; border: none; }
+
+/* --- FOOTER ÉPURÉ --- */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #020617;
+    color: var(--text-gray);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 1.1em;
+}
+
+/* --- RESPONSIVE : Pour les mobiles --- */
+@media (max-width: 1024px) {
+    .navbar { padding: 15px 30px; }
+    .hero h1 { font-size: 3.5em; }
+    .reservation-box { padding: 30px; margin: 0 15px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-grid button, .btn-submit { grid-column: span 1; }
+    .slots-container { grid-column: span 1; grid-template-columns: repeat(3, 1fr); }
+    .contact-container { flex-direction: column; padding: 30px; margin: 0 15px; }
+    .map-container { height: 300px; }
+    .terrains-section, .contact-section { padding: 80px 20px; }
+}
+
+@media (max-width: 480px) {
+    .slots-container { grid-template-columns: repeat(2, 1fr); }
+    .hero h1 { font-size: 2.5em; }
+}
+/* --- CONTRÔLE DE SAISIE (ERREURS) --- */
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-wrapper input {
+    width: 100%; /* Garde l'alignement parfait de la grille */
+}
+
+/* Le petit texte rouge caché par défaut */
+.error-text {
+    color: #ef4444;
+    font-size: 0.85em;
+    position: absolute;
+    bottom: -22px;
+    left: 10px;
+    display: none; /* On le cache tant qu'il n'y a pas d'erreur */
+    font-weight: 500;
+}
+
+/* La classe qu'on ajoutera en Javascript si c'est faux */
+.form-grid input.input-error {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.05);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+}
+/* --- RECHERCHE & TABLEAU ORIGINAUX --- */
+.search-container { position: relative; margin-bottom: 20px; max-width: 400px; }
+
+/* Ajout de ce bloc pour dompter la loupe ! */
+.search-container i { 
+    position: absolute; 
+    left: 16px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    color: var(--text-muted); 
+    pointer-events: none; 
+}
+
+.search-box { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); padding: 14px 20px 14px 45px; border-radius: 10px; color: white; outline: none; }
