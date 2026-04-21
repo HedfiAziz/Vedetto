@@ -441,3 +441,62 @@ footer {
 }
 
 .search-box { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); padding: 14px 20px 14px 45px; border-radius: 10px; color: white; outline: none; }
+
+/* ========================================================================== */
+/* --- AJOUTS EXCLUSIFS POUR LE MOBILE & LE TABLEAU (SANS RIEN EFFACER) --- */
+/* ========================================================================== */
+
+/* 1. Rendre le tableau "scrollable" (glissant) sur mobile */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Défilement fluide sur téléphone */
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    min-width: 700px; /* Force le tableau à garder une largeur lisible, créant la barre de défilement */
+    border-collapse: collapse;
+}
+
+/* 2. Améliorations Spécifiques sur Téléphone (Écrans de moins de 768px) */
+@media (max-width: 768px) {
+    /* Navbar : On empile le logo et les liens pour que ça ne déborde pas de l'écran */
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+    .hero {
+                padding-top: 160px; /* Tu peux augmenter/diminuer ce chiffre si besoin */
+            }
+
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 0;
+                gap: 15px;
+            }
+    
+    
+
+    /* Le conteneur de recherche (loupe + input) prend toute la largeur */
+    .search-container {
+        max-width: 100%;
+    }
+
+    /* Les terrains : Ajustement pour que la carte ne dépasse pas de l'écran */
+    .terrain-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    /* Le bouton WhatsApp prend toute la largeur pour être facile à cliquer */
+    .btn-whatsapp {
+        width: 100%;
+        justify-content: center;
+    }
+}
