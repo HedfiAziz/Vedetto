@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='image/logo.png') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation Confirmée - VEDETTO</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .success-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(11, 17, 32, 0.85), rgba(11, 17, 32, 0.95)), url('https://images.unsplash.com/photo-1518605368461-1ee7c5320746?q=80&w=2000&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+            padding: 20px;
+        }
+
+        .success-card {
+            max-width: 650px;
+            width: 100%;
+            padding: 60px 40px;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .check-icon {
+            font-size: 6em;
+            color: var(--success-green);
+            margin-bottom: 25px;
+            text-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+            /* Effet de "pop" quand la page charge */
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transform: scale(0);
+        }
+
+        .success-title {
+            font-size: 2.8em;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .success-text {
+            font-size: 1.2em;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .success-text span {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--hover-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.6);
+        }
+
+        /* Animations */
+        @keyframes popIn {
+            to { transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="success-hero">
+        <div class="glass-effect success-card">
+            
+            <i class="fa-solid fa-circle-check check-icon"></i>
+            
+            <h1 class="success-title">Réservation Validée !</h1>
+            
+            <p class="success-text">
+                Merci ! Votre réservation chez <span>VEDETTO</span> a été enregistrée avec succès. <br>
+                Préparez vos crampons, on vous attend sur le terrain !
+            </p>
+            
+            <a href="/" class="btn-back">
+                <i class="fa-solid fa-arrow-left"></i> Retour à l'accueil
+            </a>
+            
+        </div>
+    </div>
+
+</body>
+</html>

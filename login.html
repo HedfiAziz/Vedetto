@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='image/logo.png') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion Administration - VEDETTO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(11, 17, 32, 0.85), rgba(11, 17, 32, 0.95)), url('https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2000&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+        }
+        .login-box {
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+        .login-box h2 {
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .login-box .form-grid {
+            grid-template-columns: 1fr; /* Une seule colonne */
+        }
+        .error-msg {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-hero">
+        <div class="reservation-box login-box glass-effect">
+            <h2><i class="fa-solid fa-lock"></i> Espace Admin</h2>
+            
+            {% if erreur %}
+                <div class="error-msg">{{ erreur }}</div>
+            {% endif %}
+
+            <form action="{{ url_for('login') }}" method="POST" class="form-grid">
+                <input type="text" name="username" placeholder="Identifiant" required>
+                <input type="password" name="password" placeholder="Mot de passe" required>
+                <button type="submit" class="btn-submit">
+                    SE CONNECTER <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            
+            <div style="margin-top: 20px;">
+                <a href="/" style="color: var(--text-gray); text-decoration: none; font-size: 0.9em;">
+                    <i class="fa-solid fa-arrow-left"></i> Retour au site
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
