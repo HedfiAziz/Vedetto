@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='image/logo.png') }}?v=2.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Pro - VEDETTO</title>
@@ -201,6 +202,57 @@
         .btn-delete { color: var(--text-muted); cursor: pointer; transition: all 0.2s ease; }
         .btn-delete:hover { color: var(--danger); transform: scale(1.1); }
 
+        /* ========================================================================== */
+        /* --- AJOUTS EXCLUSIFS POUR LE MOBILE (SANS RIEN EFFACER) --- */
+        /* ========================================================================== */
+        
+        /* Assurer le défilement horizontal fluide du tableau de la liste détaillée */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        #adminTable {
+            min-width: 800px; /* Force la largeur minimale pour scroller sans écraser le texte */
+        }
+
+        /* Ajustements spécifiques pour les écrans de téléphone */
+        @media (max-width: 768px) {
+            /* En-tête : on empile le message de bienvenue et le bouton déconnexion */
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .btn-logout {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Navigation du planning : on adapte les boutons pour qu'ils tiennent sur mobile */
+            .planning-header-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .planning-nav-box {
+                flex-wrap: wrap;
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .btn-nav, .date-badge {
+                flex: 1 1 auto;
+                text-align: center;
+                font-size: 0.85em; /* Un peu plus petit pour que ça rentre bien */
+            }
+
+            /* Barre de recherche plein écran */
+            .search-container {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
